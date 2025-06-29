@@ -290,10 +290,12 @@ def search_detail():
             }
         })
 
+    hasil_sorted = sorted(hasil, key=lambda x: x["jarak"])
     return jsonify({
-        "query": q,
-        "hasil": hasil
+    "query": q,
+    "hasil": hasil_sorted
     })
+
 
 
 @app.route('/rekomendasi', methods=['GET'])
