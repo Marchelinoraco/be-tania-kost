@@ -327,10 +327,12 @@ def search_detail():
             }
         })
 
-    hasil_sorted = sorted(hasil, key=lambda x: x["jarak"])
+    # ✅ Urutkan berdasarkan skor kemiripan tertinggi
+    hasil_sorted = sorted(hasil, key=lambda x: x["skor_kemiripan"], reverse=True)
+
     return jsonify({
-    "query": q,
-    "hasil": hasil_sorted
+        "query": q,
+        "hasil": hasil_sorted
     })
 
 
