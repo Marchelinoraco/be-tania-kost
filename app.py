@@ -5,44 +5,65 @@ from sklearn.metrics.pairwise import cosine_similarity
 from flask_cors import CORS
 from math import log10, sqrt
 import numpy as np
+import json
 
 
 # ===================== DATA ===================== #
 data = pd.DataFrame({
     "Nama Indekos": [
-        "Kost Genteng Biru", "Kost Genteng Merah", "Kost Nibil", "Kost Romancy",
-        "Kost Bonita", "Kost Glory", "Kost Executive Family", "Kost Anugerah",
-        "Kos Rajawali", "Kost Mulia", "D’Kost"
+        "HN", "Villa Imanuel", "Villa Imanuel 2", "Kost Melanesia", "Kost Nibil", "Kost Nibil II", "Kost Blessing House", "Kost Imanuel",
+        "Abimelek Kost", "Kost Candi Borobudur", "Kost Megumi Kuning", "Glory", "Kost Orange Agfella", "Kost Aresidence",
+        "Kost Edelweis", "Kost Bougenvil", "Kost Mulia I", "Kost Mulia II", "Kost Budi Sejati", "Kost Supit", "Kost Glorius",
+        "Kost Lestari", "Kost First Harmony Kombos"
     ],
     "Jenis Indekos": [
-        "Putri", "Putri", "Putri", "Putri",
-        "Putri", "Campur", "Campur", "Campur",
-        "Campur", "Campur", "Campur"
+        "Putri", "Putri", "Campur", "Campur", "Putri", "Campur", "Wanita", "Wanita",
+        "Wanita", "Wanita", "Campur", "Campur", "Campur", "Putri",
+        "Campur", "Campur", "Campur", "Campur", "Campur", "Campur", "Campur",
+        "Campur", "Campur"
     ],
     "Harga": [
-        800000, 800000, 750000, 1200000,
-        700000, 900000, 850000, 1000000,
-        1200000, 1000000, 1250000
+        750000, 500000, 700000, 700000, 750000, 750000, 800000, 850000,
+        600000, 700000, 800000, 900000, 700000, 500000,
+        1000000, 900000, 1000000, 1000000, 700000, 900000, 900000,
+        800000, 1200000
     ],
     "Fasilitas": [
-        "Wifi, Kamar Mandi Dalam, Listrik, Dapur Bersama",
-        "Wifi, Kamar Mandi Dalam, Kulkas Bersama, Listrik",
-        "Lemari, Meja Belajar, Listrik, Kamar Mandi Dalam, Dapur Bersama",
-        "Wifi, Meja Belajar, Meja Rias, Tempat Tidur, Lemari, Kamar Mandi Dalam, Kulkas Bersama, Dapur Bersama, AC",
-        "Wifi, Kamar Mandi Dalam",
-        "Wifi, Kamar Mandi Dalam",
-        "Wifi, Kamar Mandi Dalam, Dapur Bersama, Listrik, Parkiran",
-        "Wifi, Kamar Mandi Dalam, AC, Dapur Bersama, Parkiran",
-        "Wifi, Kamar Mandi Dalam, Dapur Bersama, AC, Parkiran",
-        "Wifi, Kamar Mandi Dalam, Dapur Bersama, AC, Parkiran",
-        "Wifi, Kamar Mandi Dalam, AC, Parkiran"
+        "Kamar Mandi Dalam, Listrik, Wifi, Dapur Bersama",
+        "Listrik, Dapur Bersama",
+        "Listrik, Dapur Bersama, Meja Belajar",
+        "Kamar Mandi Dalam, Listrik",
+        "Kamar Mandi Dalam, Meja Belajar, Lemari, Listrik, Dapur Bersama",
+        "Meja Belajar, Lemari, Listrik, Dapur Bersama",
+        "Meja Belajar, Lemari, Listrik, Dapur Bersama",
+        "Kamar Mandi Dalam, Wifi, Listrik, Dapur Bersama",
+        "Meja Belajar, Wifi, Dapur Bersama, Listrik, Mesin Cuci Bersama",
+        "Wifi, Kamar Mandi Dalam, Meja Belajar, Listrik",
+        "Wifi, Kamar Mandi Dalam, Meja Belajar, Listrik, Dapur Bersama",
+        "AC, Wifi, Meja Belajar, Kamar Mandi Dalam",
+        "Kamar Mandi Dalam, Listrik, Dapur Bersama",
+        "Kamar Mandi Dalam, Wifi, Dapur Bersama",
+        "AC, Wifi, Dapur Bersama, Kamar Mandi Dalam, Parkiran",
+        "Kamar Mandi Dalam, Wifi, Dapur Bersama, Parkiran",
+        "Kamar Mandi Dalam, Wifi, AC, Parkiran, Kamar Mandi Dalam",
+        "Kamar Mandi Dalam, Wifi, AC, Parkiran, Kamar Mandi Dalam",
+        "Kamar Mandi Dalam, Meja Belajar, Kasur",
+        "AC, Kamar Mandi Dalam, Kasur, Meja Belajar, Wifi, Parkiran",
+        "AC, Kamar Mandi Dalam, Wifi",
+        "Listrik, Kamar Mandi Dalam, Kasur, Meja Belajar, Wifi, Parkiran",
+        "AC, Wifi, Parkiran, Kamar Mandi Dalam, Lemari, Meja Belajar, TV, Rak Sepatu, Dapur Bersama"
     ],
-    "Jarak": [230, 235, 250, 230, 500, 300, 280, 650, 500, 700, 900],
-     "Kontak": [
-        "6281234567890", "6281234567891", "6281234567892", 
-        "6281234567893", "6281234567894", "6281234567895", 
-        "6281234567896", "6281234567897", "6281234567898", 
-        "6281234567899", "6281234567800"
+    "Jarak": [
+        240, 110, 110, 110, 80, 80, 30, 35,
+        40, 35, 40, 60, 70, 100,
+        190, 190, 290, 290, 500, 350, 350,
+        270, 650
+    ],
+    "Kontak": [
+        "", "", "", "", "", "", "", "",
+        "", "", "", "", "", "",
+        "", "", "", "", "", "", "",
+        "", ""
     ]
 })
 
@@ -151,18 +172,34 @@ def manual_rekomendasi_detail():
     })
 
     # ================== Step 8: Vektor Preferensi User ==================
-    idx_ac = fitur.index("AC")
-    user_vector = np.array([
-        idf[idx_ac],  # TF-IDF AC
-        1.0,          # harga
-        1.0,          # jarak
-        1.0           # jenis
-    ])
+        # ================== Step 8: Vektor Preferensi User ==================
+    preferensi = request.args.get("preferensi")
+    if preferensi:
+        preferensi = json.loads(preferensi)
+    else:
+        preferensi = {}
+
+    fitur_index = {f.lower(): i for i, f in enumerate(fitur)}
+    user_tfidf = np.zeros(len(fitur))
+
+    for f in preferensi.get("fasilitas", []):
+        idx = fitur_index.get(f.lower())
+        if idx is not None:
+            user_tfidf[idx] = idf[idx]
+
+    tfidf_score = user_tfidf.sum()
+    skor_harga = 1.0 if preferensi.get("murah") else 0.5
+    skor_jarak = 1.0 if preferensi.get("dekat") else 0.5
+    jenis = 1.0 if preferensi.get("putri") else 0.5
+
+    user_vector = np.array([tfidf_score, skor_harga, skor_jarak, jenis])
+
     log["steps"].append({
         "title": "Vektor Preferensi User",
         "data": user_vector.tolist(),
-        "keterangan": ["AC", "Harga Prefer Murah", "Jarak Dekat", "Jenis Putri"]
+        "keterangan": ["TF-IDF Fasilitas", "Prefer Murah", "Prefer Dekat", "Prefer Putri"]
     })
+
 
     # ================== Step 9: Cosine Similarity ==================
     def cosine_sim(a, b):
