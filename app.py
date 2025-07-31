@@ -14,19 +14,31 @@ data = pd.DataFrame({
         "HN", "Villa Imanuel", "Villa Imanuel 2", "Kost Melanesia", "Kost Nibil", "Kost Nibil II", "Kost Blessing House", "Kost Imanuel",
         "Abimelek Kost", "Kost Candi Borobudur", "Kost Megumi Kuning", "Glory", "Kost Orange Agfella", "Kost Aresidence",
         "Kost Edelweis", "Kost Bougenvil", "Kost Mulia I", "Kost Mulia II", "Kost Budi Sejati", "Kost Supit", "Kost Glorius",
-        "Kost Lestari", "Kost First Harmony Kombos"
+        "Kost Lestari", "Kost First Harmony Kombos", "Genteng Biru", "Genteng Merah", "Romancy", "Kost Kombos", "Rumah Kost Syaloom",
+        "Kost Kuning", "Kapleng Kost", "Kost Pesona Prima", "Kost Sejati", "Kost Korea", "Berkah Lolak Kost", "Greenhouse",
+        "Kost Setia Abadi", "Kost Griya", "Easter Kost Resindence", "Kost Wanita Harmony", "Zilena Home 1", "Small Ville Kost",
+        "Prime Living Kost", "Kost Yorico", "Kost Elganza", "Kost Ohio", "Kost Biru", "Kost Ohio 2",     "Kost Kato 1", "Kost Megumi", "Kanaan House", "Kost Cendia Oracia", "Kost White",
+        "Rumah Kost Melodi", "Kost Executive", "Kost GM", "Kost Sejati", "Orange Kost"
     ],
     "Jenis Indekos": [
         "Putri", "Putri", "Campur", "Campur", "Putri", "Campur", "Wanita", "Wanita",
         "Wanita", "Wanita", "Campur", "Campur", "Campur", "Putri",
         "Campur", "Campur", "Campur", "Campur", "Campur", "Campur", "Campur",
-        "Campur", "Campur"
+        "Campur", "Campur", "Putri", "Putri", "Putri", "Campur", "Campur",
+        "Campur", "Campur", "Campur", "Campur", "Campur", "Campur", "Campur",
+        "Campur", "Campur", "Campur", "Putri", "Campur", "Campur",
+        "Campur", "Campur", "Campur", "Campur", "Campur", "Campur",  "Campur", "Campur", "Campur", "Campur", "Campur",
+        "Putri", "Campur", "Campur", "Campur", "Campur", 
     ],
     "Harga": [
         750000, 500000, 700000, 700000, 750000, 750000, 800000, 850000,
         600000, 700000, 800000, 900000, 700000, 500000,
         1000000, 900000, 1000000, 1000000, 700000, 900000, 900000,
-        800000, 1200000
+        800000, 1200000, 800000, 800000, 1200000, 500000, 850000,
+        950000, 1500000, 1000000, 800000, 1000000, 1250000, 1000000,
+        500000, 800000, 1150000, 900000, 1200000, 550000,
+        1000000, 950000, 500000, 1000000, 800000, 1000000, 800000, 850000, 900000, 900000, 1000000,
+        1000000, 1200000, 1100000, 900000, 500000
     ],
     "Fasilitas": [
         "Kamar Mandi Dalam, Listrik, Wifi, Dapur Bersama",
@@ -51,21 +63,93 @@ data = pd.DataFrame({
         "AC, Kamar Mandi Dalam, Kasur, Meja Belajar, Wifi, Parkiran",
         "AC, Kamar Mandi Dalam, Wifi",
         "Listrik, Kamar Mandi Dalam, Kasur, Meja Belajar, Wifi, Parkiran",
-        "AC, Wifi, Parkiran, Kamar Mandi Dalam, Lemari, Meja Belajar, TV, Rak Sepatu, Dapur Bersama"
+        "AC, Wifi, Parkiran, Kamar Mandi Dalam, Lemari, Meja Belajar, TV, Rak Sepatu, Dapur Bersama",
+        "Wifi, Kamar Mandi Dalam, Listrik, Dapur Bersama",
+        "Wifi, Kamar Mandi Dalam, Kulkas Bersama, Listrik",
+        "Kamar Mandi Dalam, Meja Belajar, Meja Rias, Tempat Tidur, Lemari, Wifi, Kulkas, Dapur Bersama, AC",
+        "Wifi, Kamar Mandi Dalam, Listrik, Meja Belajar",
+        "Listrik, Wifi, Meja Belajar, Parkiran, Dapur Bersama, Kamar Mandi Dalam",
+        "Dapur Bersama, Wifi, Meja Belajar, Parkiran, Kamar Mandi Dalam",
+        "Dapur Bersama, Wifi, Meja Belajar, Parkiran, AC, Lemari, Kamar Mandi Dalam",
+        "Dapur Bersama, Wifi, Meja Belajar, Parkiran, AC, Lemari, Kamar Mandi Dalam",
+        "Dapur Bersama, Wifi, Meja Belajar, Parkiran, Kamar Mandi Dalam",
+        "Dapur Bersama, Wifi, Meja Belajar, Parkiran, Kamar Mandi Dalam, AC",
+        "Dapur Bersama, Wifi, Meja Rias, Parkiran, Kamar Mandi Dalam, AC",
+        "Dapur Bersama, Wifi, Meja Rias, Parkiran, Kamar Mandi Dalam, AC",
+        "Wifi, Kamar Mandi Dalam, Listrik, Meja Belajar",
+        "Wifi, Kamar Mandi Dalam, Listrik, Meja Belajar",
+        "Wifi, Meja Belajar, Meja Rias, Tempat Tidur, Lemari, Kamar Mandi Dalam, Kulkas Bersama, Dapur Bersama, AC",
+        "Wifi, Kamar Mandi Dalam, Listrik, Meja Belajar, Lemari",
+        "Wifi, Dapur Bersama, Kasur, Meja Belajar, Kamar Mandi Dalam, AC, Rak Sepatu, Lemari",
+        "Wifi, Kamar Mandi Luar Dalam, Listrik, Meja Belajar, Lemari",
+        "Wifi, Dapur Bersama, Kasur, Meja Belajar, Kamar Mandi Dalam, AC, Rak Sepatu, Lemari",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama",
+        "Tempat tidur, Lemari, Kamar Mandi Luar, Dapur Bersama, Listrik",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, AC, Wifi",
+        "Tempat tidur, Lemari, Kamar Mandi Luar, Dapur Bersama, Listrik",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, AC, Wifi", "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, Listrik, Wifi",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, Listrik, Parkiran, Wifi",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, Listrik, Parkiran, Wifi",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, Listrik, Parkiran, Wifi",
+        "Wifi, Dapur Bersama, Kasur, Meja Belajar, Kamar Mandi Dalam, AC, Rak Sepatu, Lemari",
+        "Wifi, Dapur Bersama, Kasur, Meja Belajar, Kamar Mandi Dalam, AC, Rak Sepatu, Lemari",
+        "AC, Tempat Tidur, Kamar Mandi Dalam, Wifi, Dapur Bersama, Lemari, Parkiran, Meja Rias",
+        "AC, Tempat Tidur, Kamar Mandi Dalam, Wifi, Dapur Bersama, Lemari, Parkiran, Meja Rias",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, Listrik, Parkiran, Wifi",
+        "Tempat tidur, Lemari, Kamar Mandi Dalam, Dapur Bersama, Listrik"
     ],
     "Jarak": [
         240, 110, 110, 110, 80, 80, 30, 35,
         40, 35, 40, 60, 70, 100,
         190, 190, 290, 290, 500, 350, 350,
-        270, 650
+        270, 650, 230, 235, 200, 1100, 2200,
+        2200, 2400, 2700, 2800, 650, 2000, 5400,
+        5000, 4800, 4700, 4000, 3900, 3700,
+        3700, 3700, 3700, 3600, 3600, 3700,     3500, 3500, 3300, 3000, 2900,
+        2800, 2900, 3000, 3000, 3100
     ],
     "Kontak": [
         "", "", "", "", "", "", "", "",
         "", "", "", "", "", "",
         "", "", "", "", "", "", "",
-        "", ""
+        "", "", "", "", "", "081356743041", "082195017377",
+        "082211350362", "085240193550", "081340242881", "082195611777", "082211350562", "081244043469", "081356504020",
+        "082211350562", "08114343009", "082344111399", "085240982309", "08114321235", "085240783311",
+        "08893383388", "085342158247", "082211350562", "082211350562", "082396201350", "082211350562", "085740824179", "081310008568", "082259942227", "082198934558", "082188851998",
+        "08539740148", "082211350562", "082211350562", "085777006402", "085777006402"
     ]
 })
+
+
+# Tambahkan Genteng Biru
+data.loc[len(data)] = [
+    "Genteng Biru",
+    "Putri",
+    800000,
+    "Wifi, Kamar Mandi Dalam, Listrik, Dapur Bersama",
+    230,
+    ""
+]
+
+# Tambahkan Genteng Merah
+data.loc[len(data)] = [
+    "Genteng Merah",
+    "Putri",
+    800000,
+    "Wifi, Kamar Mandi Dalam, Kulkas Bersama, Listrik",
+    235,
+    ""
+]
+
+# Tambahkan Romancy
+data.loc[len(data)] = [
+    "Romancy",
+    "Putri",
+    1200000,
+    "Kamar Mandi Dalam, Meja Belajar, Meja Rias, Tempat Tidur, Lemari, Wifi, Kulkas, Dapur Bersama, AC",
+    200,
+    ""
+]
 
 # ===================== GABUNG FITUR ===================== #
 def gabungkan_fitur(row):
